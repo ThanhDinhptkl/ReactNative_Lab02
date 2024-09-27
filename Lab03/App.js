@@ -129,9 +129,68 @@ function Screen3({ navigation }) {
           <TouchableOpacity style={styles.squareButton3}></TouchableOpacity>
         </View>
         <View style={styles.buttonXong}>
-          <TouchableOpacity style={styles.customButton1}>
+          <TouchableOpacity
+            style={styles.customButton1}
+            onPress={() => navigation.navigate("Screen4")}
+          >
             <Text style={styles.customButtonText}>XONG</Text>
           </TouchableOpacity>
+        </View>
+      </View>
+    </>
+  );
+}
+
+function Screen4({ navigation }) {
+  return (
+    <>
+      <View style={styles.container}>
+        <Image source={require("./image/vs_red_a2.png")} />
+      </View>
+      <View style={styles.noiDungContainer}>
+        <Text>Điện Thoại Vsmart Joy 3 - Hàng chính hãng</Text>
+        <View style={styles.starContainer}>
+          <Image source={require("./image/star.png")} />
+          <Image source={require("./image/star.png")} />
+          <Image source={require("./image/star.png")} />
+          <Image source={require("./image/star.png")} />
+          <Image source={require("./image/star.png")} />
+          <Text style={styles.danhGiaContainer}>(Xem 828 đánh giá)</Text>
+        </View>
+        <View style={styles.cungHangContainer}>
+          <Text style={styles.giaContainer}>1.790.000 đ</Text>
+          <Text style={styles.gachNgangContainer}>1.790.000 đ</Text>
+        </View>
+        <View style={styles.hoiContainer}>
+          <Text style={styles.hoanTienContainer}>Ở ĐÂU RẺ HƠN HOÀN TIỀN</Text>
+          <View style={styles.circle}>
+            <Text style={styles.questionMark}>?</Text>
+          </View>
+        </View>
+        <View>
+          <View style={styles.chonMau}>
+            <View style={styles.buttonWrapper}>
+              <TouchableOpacity
+                style={[
+                  styles.customButtonWhite,
+                  {
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    paddingLeft: 15,
+                  },
+                ]}
+                onPress={() => navigation.navigate("Screen2")}
+              >
+                <Text style={styles.customButtonTextBlack}>4 MÀU-CHỌN MÀU</Text>
+                <Text style={styles.customButtonTextBlack2}>{">"}</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonMua}>
+              <TouchableOpacity style={styles.customButton}>
+                <Text style={styles.customButtonText}>CHỌN MUA</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       </View>
     </>
@@ -145,6 +204,7 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Screen2" component={Screen2} />
         <Stack.Screen name="Screen3" component={Screen3} />
+        <Stack.Screen name="Screen4" component={Screen4} />
       </Stack.Navigator>
     </NavigationContainer>
   );
