@@ -62,7 +62,7 @@ function HomeScreen({ navigation }) {
   );
 }
 
-function Screen2() {
+function Screen2({ navigation }) {
   return (
     <>
       <View style={styles.screen2}>
@@ -73,6 +73,49 @@ function Screen2() {
         <View style={styles.screen2Text}>
           <Text>Điện Thoại Vsmart Joy 3</Text>
           <Text>Hàng chính hãng</Text>
+        </View>
+      </View>
+      <View style={styles.screenNoiDung}>
+        <View>
+          <Text style={styles.screen2Text1}>Chọn một màu bên dưới:</Text>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.squareButton}></TouchableOpacity>
+          <TouchableOpacity style={styles.squareButton1}></TouchableOpacity>
+          <TouchableOpacity style={styles.squareButton2}></TouchableOpacity>
+          <TouchableOpacity style={styles.squareButton3}></TouchableOpacity>
+        </View>
+        <View style={styles.buttonXong}>
+          <TouchableOpacity
+            style={styles.customButton1}
+            onPress={() => navigation.navigate("Screen3")}
+          >
+            <Text style={styles.customButtonText}>XONG</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </>
+  );
+}
+
+function Screen3({ navigation }) {
+  return (
+    <>
+      <View style={styles.screen2}>
+        <Image
+          source={require("./image/vs_red_a1.png")}
+          style={styles.screen2Image}
+        />
+        <View style={styles.screen2Text}>
+          <Text>Điện Thoại Vsmart Joy 3</Text>
+          <Text>Hàng chính hãng</Text>
+          <Text>
+            Màu: <Text style={styles.inDam}>đỏ</Text>
+          </Text>
+          <Text>
+            Cung cấp bởi <Text style={styles.inDam}>Tiki Tradding</Text>
+          </Text>
+          <Text style={styles.inDam}>1.790.000 đ</Text>
         </View>
       </View>
       <View style={styles.screenNoiDung}>
@@ -101,6 +144,7 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Screen2" component={Screen2} />
+        <Stack.Screen name="Screen3" component={Screen3} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -283,5 +327,8 @@ const styles = StyleSheet.create({
     padding: 10,
     alignItems: "center",
     borderRadius: 5,
+  },
+  inDam: {
+    fontWeight: "bold",
   },
 });
