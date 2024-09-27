@@ -1,8 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import { TextInput } from "react-native";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function App() {
+const Stack = createStackNavigator();
+
+function HomeScreen({ navigation }) {
   return (
     <>
       <View style={styles.container}>
@@ -40,14 +44,14 @@ export default function App() {
                     paddingLeft: 15,
                   },
                 ]}
-                onPress={() => {}}
+                onPress={() => navigation.navigate("Screen2")}
               >
                 <Text style={styles.customButtonTextBlack}>4 MÀU-CHỌN MÀU</Text>
                 <Text style={styles.customButtonTextBlack2}>{">"}</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.buttonMua}>
-              <TouchableOpacity style={styles.customButton} onPress={() => {}}>
+              <TouchableOpacity style={styles.customButton}>
                 <Text style={styles.customButtonText}>CHỌN MUA</Text>
               </TouchableOpacity>
             </View>
@@ -55,6 +59,50 @@ export default function App() {
         </View>
       </View>
     </>
+  );
+}
+
+function Screen2() {
+  return (
+    <>
+      <View style={styles.screen2}>
+        <Image
+          source={require("./image/vs_blue.png")}
+          style={styles.screen2Image}
+        />
+        <View style={styles.screen2Text}>
+          <Text>Điện Thoại Vsmart Joy 3</Text>
+          <Text>Hàng chính hãng</Text>
+        </View>
+      </View>
+      <View style={styles.screenNoiDung}>
+        <View>
+          <Text style={styles.screen2Text1}>Chọn một màu bên dưới:</Text>
+        </View>
+        <View>
+          <TouchableOpacity style={styles.squareButton}></TouchableOpacity>
+          <TouchableOpacity style={styles.squareButton1}></TouchableOpacity>
+          <TouchableOpacity style={styles.squareButton2}></TouchableOpacity>
+          <TouchableOpacity style={styles.squareButton3}></TouchableOpacity>
+        </View>
+        <View style={styles.buttonXong}>
+          <TouchableOpacity style={styles.customButton1}>
+            <Text style={styles.customButtonText}>XONG</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Screen2" component={Screen2} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -161,5 +209,79 @@ const styles = StyleSheet.create({
   customButtonTextBlack2: {
     color: "black",
     fontWeight: "bold",
+  },
+  screen2: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "start",
+    justifyContent: "start",
+  },
+  screen2Image: {
+    width: 112,
+    height: 132,
+  },
+  screen2Text: {
+    left: 26,
+    top: 17,
+  },
+  screenNoiDung: {
+    flex: 5,
+    backgroundColor: "#C4C4C4",
+  },
+  screen2Text1: {
+    left: 26,
+    top: 17,
+    fontSize: 20,
+  },
+  squareButton: {
+    backgroundColor: "#C5F1FB",
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    top: 50,
+    left: 150,
+  },
+  squareButton1: {
+    backgroundColor: "#F30D0D",
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    top: 80,
+    left: 150,
+  },
+  squareButton2: {
+    backgroundColor: "#000000",
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    top: 110,
+    left: 150,
+  },
+  squareButton3: {
+    backgroundColor: "#234896",
+    width: 100,
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+    top: 140,
+    left: 150,
+  },
+  buttonXong: {
+    top: 180,
+    width: 300,
+    left: 52,
+  },
+  customButton1: {
+    backgroundColor: "#234896",
+    padding: 10,
+    alignItems: "center",
+    borderRadius: 5,
   },
 });
